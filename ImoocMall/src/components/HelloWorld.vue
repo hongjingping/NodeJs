@@ -1,7 +1,8 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <Counter></Counter>
+    <Counter v-bind:num="num" v-on:incre="increment" v-on:decre="decrement"></Counter>
+    <p>parent: {{ num }}</p>
   </div>
 </template>
 
@@ -14,7 +15,16 @@ export default {
   },
   data () {
     return {
+      num: 12,
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods: {
+    increment () {
+      this.num++
+    },
+    decrement () {
+      this.num--
     }
   }
 }

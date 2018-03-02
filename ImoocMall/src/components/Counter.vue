@@ -8,19 +8,20 @@
 
 <script>
 export default {
+  props: ['num'],
   data () {
     return {
-      num: 0
+      num: 0,
     }
   },
   methods: {
     increment () {
-      console.log(12)
-      this.num++
+      this.$emit('incre')
+      // this.num++
     },
     decrement () {
-      console.log(23)
-      this.num--
+      this.$emit('decre')
+      // this.num--
     }
   }
 }
