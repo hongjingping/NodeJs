@@ -5,9 +5,10 @@ import Goodslist from './../views/Goodslist.vue'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
-      path: '/goods/:goodsId',
+      path: '/goods/:goodsId/user/:name',
       name: 'Goodslist',
       component: Goodslist
     }
