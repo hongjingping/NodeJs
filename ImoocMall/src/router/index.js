@@ -5,7 +5,6 @@ import Cart from '@/views/Cart.vue'
 import Title from '@/views/Title.vue'
 import Image from '@/views/Image.vue'
 
-
 Vue.use(Router)
 
 export default new Router({
@@ -14,7 +13,7 @@ export default new Router({
       path: '/goods',
       name: 'Goodslist',
       components: {
-        default:  Goodslist,
+        default: Goodslist,
         title: Title,
         image: Image
       }

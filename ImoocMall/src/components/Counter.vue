@@ -17,6 +17,7 @@ export default {
   methods: {
     increment () {
       this.$emit('incre')
+      import('./../util.js')
       // this.num++
     },
     decrement () {
