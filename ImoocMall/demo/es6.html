@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ES6</title>
+</head>
+<style>
+  .log {
+    background: black;
+    color: white;
+    padding: 10px 20px;
+  }
+</style>
+<body>
+  <h2>Es6</h2>
+  <div id="log" class="log"></div>
+  <script>
+    var str = `
+    console.log('a' + a)
+    var a = 1
+    console.log('b' + b)
+    let b = 2
+
+    function user(){
+      // var仅限于函数内部，属于函数级的作用域
+      var a = 1
+    }
+    console.log('a' + a)
+
+    // 块级作用域
+    {
+      let a = 1
+      var b = 2
+    }
+    console.log('b' + b)
+    console.log('a' + a)
+
+    // let 和 const区别
+    let a = 1
+    a = 2
+    const b = 2
+    // b是常量，后面不可以改变
+    b =3
+
+    // 默认参数
+    function add (flag) {
+      if (flag) {
+        return 'true'
+      } else {
+        return 'error'
+      }
+    }
+    console.log(add())
+
+    function sum (flag = true) {
+      if (flag) {
+        return 'true'
+      } else {
+        return 'false'
+      }
+    }
+    console.log(sum())
+
+
+    function sum (num1, num2 =3) {
+      return num1 + num2
+    }
+    console.log(sum(1))
+
+    // 箭头函数
+    var arr = [2, 6, 9]
+    var newArr = arr.map(item => {
+      item + 2
+    })
+    console.log(newArr)
+
+    // 结构
+    var [a, b, c] = [4, 6, 9]; // 数组分解
+    var [x, y, z] = 'Vue'; // 字符串分解
+    var {m, n} = {x:10,y:20}; // 对象分解
+    // 函数的分解
+    function sum([x, y]) {
+      return x + y;
+    }
+    var total = sum([2, 8])
+    `
+    printLog(str)
+
+    // 模板语言
+    let userName = 'wikiHong'
+    printLog(`I am ${userName}`)
+
+
+
+
+    function printLog( str ) {
+      document.getElementById('log').innerText += str
+    }
+  </script>
+</body>
+</html>
