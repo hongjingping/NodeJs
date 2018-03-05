@@ -10,12 +10,18 @@
     <div>
       <router-view></router-view>
     </div>
+    <router-link :to="{name: 'Cart', params: {cartId: '1234'}}">跳转到购物车页面</router-link>
+    <!-- <button @click="jump">跳转到购物车页面</button> -->
   </div>
 </template>
 
 <script>
 export default {
-
+  methods: {
+    jump () {
+      this.$router.go(-2)
+    }
+  }
 }
 </script>
 
