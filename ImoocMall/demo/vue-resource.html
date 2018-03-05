@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <script src="./node_modules/vue/dist/vue.js"></script>
-  <script src="./node_modules/vue-resource/dist/vue-resource.js"></script>
+  <script src="../node_modules/vue/dist/vue.js"></script>
+  <script src="../node_modules/vue-resource/dist/vue-resource.js"></script>
   <title>Document</title>
 </head>
 <body>
@@ -15,6 +15,7 @@
     <a href="javascript:;" @click="get" class="btn btn-primary">Get请求</a>
     <a href="javascript:;" @click="post" class="btn btn-primary">Post请求</a>
     <a href="javascript:;" @click="jsonp" class="btn btn-primary">Jsonp请求</a>
+    <a href="javascript:;" @click="http" class="btn btn-primary">http请求</a>
     <div>
       <span>{{ msg }}</span>
     </div>
@@ -24,6 +25,21 @@
       el: '#app',
       data: {
         msg: ""
+      },
+      mounted () {
+        // 全局拦截器
+        Vue.http.interceptors.push(function (request, next) {
+          // loading处理
+          console.log("request init.")
+          next(function (response) {
+            console.log("response init.")
+            return response
+          })
+        })
+      },
+      // 全局路径的配置
+      http: {
+        root: "http://192.168.2.1:8080/"
       },
       methods: {
         get: function () {
@@ -55,6 +71,23 @@
           this.$http.jsonp("https://github.com/hongjingping/NodeJs/branch_commits/3606cfc9cc053288a4e39566af55ab08086ac268").then(res => {
             this.msg = res.data;
           });
+        },
+        http: function () {
+          this.$http({
+            url: 'package.json',
+            params: {
+              userId: '103'
+            },
+            headers: {
+              token: '123'
+            },
+            timeout: 5,
+            before: function () {
+              console.log('before init')
+            }
+          }).then(function (res) {
+            this.msg = res.data
+          })
         }
       }
     })
