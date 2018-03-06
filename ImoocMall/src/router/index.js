@@ -14,8 +14,6 @@ export default new Router({
       name: 'Goodslist',
       components: {
         default: Goodslist
-        // title: Title,
-        // image: Image
       }
     },
     {
